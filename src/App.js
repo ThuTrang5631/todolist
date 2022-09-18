@@ -20,19 +20,32 @@ function App() {
     setWork('')
   }
 
+  const handleDelete = (index) => {
+
+  }
+
   return (
     <div className='container'>
-      <h1>TO DO LIST</h1>
-      <div className='block'>
-      <div className='input-btn'>
-        <input placeholder='Enter todo here' value={work} onChange = {e => setWork(e.target.value)}></input>
-        <button onClick = {handleSubmit}>Add</button>
+      <div className='contain-title'>
+        <h1>TO DO LIST</h1>
+        <img className = 'logo-list' src='list.png'></img>
       </div>
-      <ul>
-        {works.map((work, index) => (
-          <li key={index}>{work}</li>
-        ))}
-      </ul>
+      <div className='block'>
+        <div className='input-btn'>
+          <input placeholder='Enter todo here...' value={work} onChange = {e => setWork(e.target.value)}></input>
+          <button className='btn-add' onClick = {handleSubmit}>Add</button>
+        </div>
+        <div className='contain-todo'>
+          <ul>
+            {works.map((work, index) => (
+                <div className='todo-detail'>
+                <li key={index}>{work} 
+                </li>
+                <button className='btn-delete' onClick={handleDelete(index)}>Delete</button>
+                </div>
+            ))}
+          </ul>
+        </div>
       </div>
     </div>
   );
