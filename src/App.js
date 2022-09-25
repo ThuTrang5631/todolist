@@ -3,6 +3,7 @@ import './App.css';
 import {useState} from 'react';
 
 function App() {
+  // localStorage.clear();
   const [work, setWork] = useState('')
   const [works, setWorks] = useState(()=>{
     const storageWorks = JSON.parse(localStorage.getItem('works')) ?? []
@@ -20,9 +21,15 @@ function App() {
     setWork('')
   }
 
-  const handleDelete = (index) => {
-
+  
+  const handleDelete = (work, index) => {
+    const delWork = works.filter((item, i) => i !== index)
+    setWorks(delWork)
+    localStorage.setItem('works', JSON.stringify(delWork))
+    return delWork
   }
+
+  
 
   return (
     <div className='container'>
@@ -41,7 +48,7 @@ function App() {
                 <div className='todo-detail'>
                 <li key={index}>{work} 
                 </li>
-                <button className='btn-delete' onClick={handleDelete(index)}>Delete</button>
+                <button className='btn-delete' onClick={() => handleDelete(work, index)}>Delete</button>
                 </div>
             ))}
           </ul>

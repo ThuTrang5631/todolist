@@ -2,7 +2,7 @@ body{
   background-color: #F9F9F9;
 }
 .container{
-  display: inline-block;
+  display: block;
   background-color: white;
   margin: 4vw 20vw ;
   border: 0.5px solid #CDF0EA;
